@@ -1,0 +1,39 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::*"
+      ]
+    },
+    {
+      "Sid": "Stmt1441234334958",
+      "Action": [
+        "elastictranscoder:CreateJob"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+        "Effect": "Allow",
+        "Action": [
+            "cognito-identity:GetOpenIdTokenForDeveloperIdentity"
+        ],
+        "Resource": "arn:aws:cognito-identity:<REGION>:<AWS_ACCOUNT_ID>:identitypool/<IDENTITY_POOL_ID>"
+    }    
+  ]
+}

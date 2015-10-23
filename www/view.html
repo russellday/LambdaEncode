@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title>Sample Login Page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.6.min.js"></script>
+  <script src="Console.js"></script>
+	<script>
+  AWS.config.region = '<REGION>';
+	AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: '<IDENTITY_POOL_ID>'
+  });
+  var lambda = new AWS.Lambda();
+	</script>
+  <script>
+
+  var input = {
+  };
+  lambda.invoke({
+    FunctionName: 'LambdaEncodeGetMedia',
+    Payload: JSON.stringify(input)
+  }, function(err, data) {
+    if (err) {
+      // this randomly happens usually after I push an update.. a reload fixes this issue.
+      console.log(err, err.stack);
+      if(err.toString().substring(0, 43) == "NotAuthorizedException: Missing credentials"){
+        window.location.reload();
+      }
+    }
+    else {
+      var output = JSON.parse(data.Payload);
+      //console.log("debug:", output);
+      var media = output.Media;
+      var html="";
+      for (i in output.Media)
+      {
+        html = html + "<a href=video.html?media=../" + media[i].playlist + "&thumb=" + media[i].link + "><img src='" + media[i].link + "'></a><br><br>";
+      }
+      $("#videos").html(html);
+    }
+  });
+  </script>
+</head>
+<body>
+  <div class="center">
+    <a href="view.html">View Videos</a>&nbsp;|&nbsp;<a href="index.html">Add Videos</a>
+    <br>
+    <br>
+      <div id="videos"></div>
+   </div>
+</body>
+</html>

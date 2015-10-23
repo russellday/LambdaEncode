@@ -1,0 +1,12 @@
+{
+  "AWS_ACCOUNT_ID": "831402888584",
+  "CLI_PROFILE": "aws",
+  "REGION": "us-east-1",
+  "BUCKET": "lambdaencode",
+  "ALLOWED_ORIGIN": "http://lambdaencode.s3-website-us-east-1.amazonaws.com",
+  "MAX_AGE": "10",
+  "IDENTITY_POOL_NAME": "LambdaEncode",
+  "DEVELOPER_PROVIDER_NAME": "login.mycompany.myapp",
+  "EXTERNAL_NAME": "My Authentication",
+  "IDENTITY_POOL_ID": "us-east-1:0274d58e-a5c5-40c4-a38b-7af61c64c071"
+}
