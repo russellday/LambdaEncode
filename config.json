@@ -1,5 +1,5 @@
 {
-  "AWS_ACCOUNT_ID": "831402888584",
+  "AWS_ACCOUNT_ID": "123",
   "CLI_PROFILE": "aws",
   "REGION": "us-east-1",
   "BUCKET": "lambdaencode",
